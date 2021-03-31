@@ -1,0 +1,8 @@
+﻿CREATE SCHEMA [rep];
+GO
+
+CREATE SCHEMA [etl];
+GO
+
+CREATE SCHEMA [stg];
+GO

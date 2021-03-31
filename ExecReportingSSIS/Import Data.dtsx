@@ -1,0 +1,2812 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/30/2021 4:52:09 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PAULS-RAZOR"
+  DTS:CreatorName="PAULS-RAZOR\loh_p"
+  DTS:Description="DTS Wizard-generated package"
+  DTS:DTSID="{26B67529-0B90-46EE-86C5-6B5B98EDF3D7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.157"
+  DTS:LocaleID="2057"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="Package1"
+  DTS:VersionBuild="48"
+  DTS:VersionGUID="{582D0B64-C50C-415F-9968-515B3F3E6926}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{CB98837E-C451-4837-BD40-493DA907ED37}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=ExecReportingDataMart;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=false;Application Name=SSIS-Package1-{CB98837E-C451-4837-BD40-493DA907ED37}DestinationConnectionOLEDB;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionExcel]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{EC55D20C-9309-45EB-B119-EEA3BCF440DE}"
+      DTS:ObjectName="SourceConnectionExcel">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\loh_p\source\repos\Job Apps\Tilney SSIS\ExecReportingTask\Input\Tilney+Recruiting+assignment.xlsb;Extended Properties=&quot;EXCEL 12.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Import Account Group Dimension"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{edc84123-b63a-478a-bb32-29907b072843}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import Account Group Dimension"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Import Account Group Dimension\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[rep].[DimAccountGroup]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Account Group Dimension\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import Account Group Dimension\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Account Group Dimension\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[account_group_code]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="account_group_code"
+                      externalMetadataColumnId="Package\Import Account Group Dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[account_group_code]"
+                      lineageId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Output].Columns[account_group_code]" />
+                    <inputColumn
+                      refId="Package\Import Account Group Dimension\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[primary_manager_entity_id]"
+                      cachedDataType="r8"
+                      cachedName="primary_manager_entity_id"
+                      externalMetadataColumnId="Package\Import Account Group Dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[primary_manager_entity_id]"
+                      lineageId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Output].Columns[primary_manager_entity_id]" />
+                    <inputColumn
+                      refId="Package\Import Account Group Dimension\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[service_type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="service_type"
+                      externalMetadataColumnId="Package\Import Account Group Dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[service_type]"
+                      lineageId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Output].Columns[service_type]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Account Group Dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[account_group_code]"
+                      dataType="wstr"
+                      length="255"
+                      name="account_group_code" />
+                    <externalMetadataColumn
+                      refId="Package\Import Account Group Dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[primary_manager_entity_id]"
+                      dataType="r8"
+                      name="primary_manager_entity_id" />
+                    <externalMetadataColumn
+                      refId="Package\Import Account Group Dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[service_type]"
+                      dataType="wstr"
+                      length="255"
+                      name="service_type" />
+                    <externalMetadataColumn
+                      refId="Package\Import Account Group Dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AccountGroupID]"
+                      dataType="i4"
+                      name="AccountGroupID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Account Group Dimension\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import Account Group Dimension\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Account Group Dimension\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Account Group Dimension\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Account Group Dimension\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Account Group Dimension\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Account Group Dimension\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT         
+      g.[account_group_code]
+      ,g.primary_manager_entity_id
+      ,g.service_type
+FROM [stg].[AccountGroup] g
+UNION ALL
+SELECT 
+    N'Unknown' AS [account_group_code]
+    ,NULL AS [primary_manager_entity_id]
+    ,N'Unknown' AS service_type;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Account Group Dimension\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Output].Columns[account_group_code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[account_group_code]"
+                      length="255"
+                      lineageId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Output].Columns[account_group_code]"
+                      name="account_group_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Output].Columns[primary_manager_entity_id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[primary_manager_entity_id]"
+                      lineageId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Output].Columns[primary_manager_entity_id]"
+                      name="primary_manager_entity_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Output].Columns[service_type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[service_type]"
+                      length="255"
+                      lineageId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Output].Columns[service_type]"
+                      name="service_type"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[account_group_code]"
+                      dataType="wstr"
+                      length="255"
+                      name="account_group_code" />
+                    <externalMetadataColumn
+                      refId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[primary_manager_entity_id]"
+                      dataType="r8"
+                      name="primary_manager_entity_id" />
+                    <externalMetadataColumn
+                      refId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[service_type]"
+                      dataType="wstr"
+                      length="255"
+                      name="service_type" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[account_group_code]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[account_group_code]"
+                      name="account_group_code" />
+                    <outputColumn
+                      refId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[primary_manager_entity_id]"
+                      dataType="r8"
+                      lineageId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[primary_manager_entity_id]"
+                      name="primary_manager_entity_id" />
+                    <outputColumn
+                      refId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[service_type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[service_type]"
+                      name="service_type" />
+                    <outputColumn
+                      refId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Import Account Group Dimension.Paths[OLE DB Source Output]"
+              endId="Package\Import Account Group Dimension\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Import Account Group Dimension\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Import Region Dimension"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{152665CC-7D36-4EEB-9486-F354745D6653}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import Region Dimension"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Import Region Dimension\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[rep].[DimRegion]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Region Dimension\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import Region Dimension\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Region Dimension\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FPRegion]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FPRegion"
+                      externalMetadataColumnId="Package\Import Region Dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FPRegion]"
+                      lineageId="Package\Import Region Dimension\OLE DB Source.Outputs[OLE DB Source Output].Columns[FPRegion]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Region Dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RegionID]"
+                      dataType="i4"
+                      name="RegionID" />
+                    <externalMetadataColumn
+                      refId="Package\Import Region Dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FPRegion]"
+                      dataType="wstr"
+                      length="255"
+                      name="FPRegion" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Region Dimension\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import Region Dimension\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Region Dimension\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Region Dimension\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Region Dimension\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Region Dimension\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Region Dimension\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stg].[Consultant]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT      
+      [FPRegion]
+FROM    [ExecReportingDataMart].[stg].[Consultant]
+UNION 
+SELECT N'Unknown' AS [FPRegion]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Region Dimension\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import Region Dimension\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Region Dimension\OLE DB Source.Outputs[OLE DB Source Output].Columns[FPRegion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Region Dimension\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FPRegion]"
+                      length="255"
+                      lineageId="Package\Import Region Dimension\OLE DB Source.Outputs[OLE DB Source Output].Columns[FPRegion]"
+                      name="FPRegion"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Region Dimension\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FPRegion]"
+                      dataType="wstr"
+                      length="255"
+                      name="FPRegion" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import Region Dimension\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Region Dimension\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FPRegion]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import Region Dimension\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FPRegion]"
+                      name="FPRegion" />
+                    <outputColumn
+                      refId="Package\Import Region Dimension\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Region Dimension\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Region Dimension\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Region Dimension\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Import Region Dimension.Paths[OLE DB Source Output]"
+              endId="Package\Import Region Dimension\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Import Region Dimension\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Import to Staging"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{FD0BC8B0-B9BF-4B72-974E-0F355ADEB82B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import to Staging"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Import to Staging\Destination - Account"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - Account"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stg].[Account]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import to Staging\Destination - Account.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import to Staging\Destination - Account.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination - Account.Inputs[Destination Input].Columns[Id]"
+                      cachedDataType="r8"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\Import to Staging\Destination - Account.Inputs[Destination Input].ExternalColumns[Id]"
+                      lineageId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination - Account.Inputs[Destination Input].Columns[accountid]"
+                      cachedDataType="r8"
+                      cachedName="accountid"
+                      externalMetadataColumnId="Package\Import to Staging\Destination - Account.Inputs[Destination Input].ExternalColumns[accountid]"
+                      lineageId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Output].Columns[accountid]" />
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination - Account.Inputs[Destination Input].Columns[account_group_code]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="account_group_code"
+                      externalMetadataColumnId="Package\Import to Staging\Destination - Account.Inputs[Destination Input].ExternalColumns[account_group_code]"
+                      lineageId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Output].Columns[account_group_code]" />
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination - Account.Inputs[Destination Input].Columns[mandate_code]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="mandate_code"
+                      externalMetadataColumnId="Package\Import to Staging\Destination - Account.Inputs[Destination Input].ExternalColumns[mandate_code]"
+                      lineageId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Output].Columns[mandate_code]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination - Account.Inputs[Destination Input].ExternalColumns[Id]"
+                      dataType="r8"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination - Account.Inputs[Destination Input].ExternalColumns[accountid]"
+                      dataType="r8"
+                      name="accountid" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination - Account.Inputs[Destination Input].ExternalColumns[account_group_code]"
+                      dataType="wstr"
+                      length="255"
+                      name="account_group_code" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination - Account.Inputs[Destination Input].ExternalColumns[mandate_code]"
+                      dataType="wstr"
+                      length="255"
+                      name="mandate_code" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import to Staging\Destination - Account.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import to Staging\Destination - Account.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import to Staging\Destination - Account.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import to Staging\Destination - Account.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Destination - Account.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import to Staging\Destination - Account.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import to Staging\Destination 1 - AccountGroup"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination 1 - AccountGroup"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stg].[AccountGroup]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import to Staging\Destination 1 - AccountGroup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import to Staging\Destination 1 - AccountGroup.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination 1 - AccountGroup.Inputs[Destination Input].Columns[Id]"
+                      cachedDataType="r8"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\Import to Staging\Destination 1 - AccountGroup.Inputs[Destination Input].ExternalColumns[Id]"
+                      lineageId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination 1 - AccountGroup.Inputs[Destination Input].Columns[account_group_code]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="account_group_code"
+                      externalMetadataColumnId="Package\Import to Staging\Destination 1 - AccountGroup.Inputs[Destination Input].ExternalColumns[account_group_code]"
+                      lineageId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Output].Columns[account_group_code]" />
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination 1 - AccountGroup.Inputs[Destination Input].Columns[primary_manager_entity_id]"
+                      cachedDataType="r8"
+                      cachedName="primary_manager_entity_id"
+                      externalMetadataColumnId="Package\Import to Staging\Destination 1 - AccountGroup.Inputs[Destination Input].ExternalColumns[primary_manager_entity_id]"
+                      lineageId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Output].Columns[primary_manager_entity_id]" />
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination 1 - AccountGroup.Inputs[Destination Input].Columns[service_type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="service_type"
+                      externalMetadataColumnId="Package\Import to Staging\Destination 1 - AccountGroup.Inputs[Destination Input].ExternalColumns[service_type]"
+                      lineageId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Output].Columns[service_type]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination 1 - AccountGroup.Inputs[Destination Input].ExternalColumns[Id]"
+                      dataType="r8"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination 1 - AccountGroup.Inputs[Destination Input].ExternalColumns[account_group_code]"
+                      dataType="wstr"
+                      length="255"
+                      name="account_group_code" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination 1 - AccountGroup.Inputs[Destination Input].ExternalColumns[primary_manager_entity_id]"
+                      dataType="r8"
+                      name="primary_manager_entity_id" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination 1 - AccountGroup.Inputs[Destination Input].ExternalColumns[service_type]"
+                      dataType="wstr"
+                      length="255"
+                      name="service_type" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import to Staging\Destination 1 - AccountGroup.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import to Staging\Destination 1 - AccountGroup.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import to Staging\Destination 1 - AccountGroup.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import to Staging\Destination 1 - AccountGroup.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Destination 1 - AccountGroup.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import to Staging\Destination 1 - AccountGroup.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import to Staging\Destination 2 - Consultant"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination 2 - Consultant"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stg].[Consultant]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import to Staging\Destination 2 - Consultant.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import to Staging\Destination 2 - Consultant.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination 2 - Consultant.Inputs[Destination Input].Columns[Id]"
+                      cachedDataType="r8"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\Import to Staging\Destination 2 - Consultant.Inputs[Destination Input].ExternalColumns[Id]"
+                      lineageId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination 2 - Consultant.Inputs[Destination Input].Columns[FPPosition]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FPPosition"
+                      externalMetadataColumnId="Package\Import to Staging\Destination 2 - Consultant.Inputs[Destination Input].ExternalColumns[FPPosition]"
+                      lineageId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].Columns[FPPosition]" />
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination 2 - Consultant.Inputs[Destination Input].Columns[FPRegion]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FPRegion"
+                      externalMetadataColumnId="Package\Import to Staging\Destination 2 - Consultant.Inputs[Destination Input].ExternalColumns[FPRegion]"
+                      lineageId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].Columns[FPRegion]" />
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination 2 - Consultant.Inputs[Destination Input].Columns[FPLocation]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FPLocation"
+                      externalMetadataColumnId="Package\Import to Staging\Destination 2 - Consultant.Inputs[Destination Input].ExternalColumns[FPLocation]"
+                      lineageId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].Columns[FPLocation]" />
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination 2 - Consultant.Inputs[Destination Input].Columns[FPOffice]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FPOffice"
+                      externalMetadataColumnId="Package\Import to Staging\Destination 2 - Consultant.Inputs[Destination Input].ExternalColumns[FPOffice]"
+                      lineageId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].Columns[FPOffice]" />
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination 2 - Consultant.Inputs[Destination Input].Columns[FPTeam]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FPTeam"
+                      externalMetadataColumnId="Package\Import to Staging\Destination 2 - Consultant.Inputs[Destination Input].ExternalColumns[FPTeam]"
+                      lineageId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].Columns[FPTeam]" />
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination 2 - Consultant.Inputs[Destination Input].Columns[entity_id]"
+                      cachedDataType="r8"
+                      cachedName="entity_id"
+                      externalMetadataColumnId="Package\Import to Staging\Destination 2 - Consultant.Inputs[Destination Input].ExternalColumns[entity_id]"
+                      lineageId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].Columns[entity_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination 2 - Consultant.Inputs[Destination Input].ExternalColumns[Id]"
+                      dataType="r8"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination 2 - Consultant.Inputs[Destination Input].ExternalColumns[FPPosition]"
+                      dataType="wstr"
+                      length="255"
+                      name="FPPosition" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination 2 - Consultant.Inputs[Destination Input].ExternalColumns[FPRegion]"
+                      dataType="wstr"
+                      length="255"
+                      name="FPRegion" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination 2 - Consultant.Inputs[Destination Input].ExternalColumns[FPLocation]"
+                      dataType="wstr"
+                      length="255"
+                      name="FPLocation" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination 2 - Consultant.Inputs[Destination Input].ExternalColumns[FPOffice]"
+                      dataType="wstr"
+                      length="255"
+                      name="FPOffice" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination 2 - Consultant.Inputs[Destination Input].ExternalColumns[FPTeam]"
+                      dataType="wstr"
+                      length="255"
+                      name="FPTeam" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination 2 - Consultant.Inputs[Destination Input].ExternalColumns[entity_id]"
+                      dataType="r8"
+                      name="entity_id" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import to Staging\Destination 2 - Consultant.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import to Staging\Destination 2 - Consultant.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import to Staging\Destination 2 - Consultant.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import to Staging\Destination 2 - Consultant.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Destination 2 - Consultant.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import to Staging\Destination 2 - Consultant.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import to Staging\Destination 3 - Transaction"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination 3 - Transaction"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stg].[Transaction]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import to Staging\Destination 3 - Transaction.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].Columns[Id]"
+                      cachedDataType="r8"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].ExternalColumns[Id]"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].Columns[code]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="code"
+                      externalMetadataColumnId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].ExternalColumns[code]"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[code]" />
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].Columns[transaction_type_desc]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="transaction_type_desc"
+                      externalMetadataColumnId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].ExternalColumns[transaction_type_desc]"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[transaction_type_desc]" />
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].Columns[accountid]"
+                      cachedDataType="r8"
+                      cachedName="accountid"
+                      externalMetadataColumnId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].ExternalColumns[accountid]"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[accountid]" />
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].Columns[volume]"
+                      cachedDataType="r8"
+                      cachedName="volume"
+                      externalMetadataColumnId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].ExternalColumns[volume]"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[volume]" />
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].Columns[value]"
+                      cachedDataType="r8"
+                      cachedName="value"
+                      externalMetadataColumnId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].ExternalColumns[value]"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[value]" />
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].Columns[currency_code]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="currency_code"
+                      externalMetadataColumnId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].ExternalColumns[currency_code]"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[currency_code]" />
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].Columns[exchange_rate]"
+                      cachedDataType="r8"
+                      cachedName="exchange_rate"
+                      externalMetadataColumnId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].ExternalColumns[exchange_rate]"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[exchange_rate]" />
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].Columns[trade_date]"
+                      cachedDataType="date"
+                      cachedName="trade_date"
+                      externalMetadataColumnId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].ExternalColumns[trade_date]"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[trade_date]" />
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].Columns[settlement_date]"
+                      cachedDataType="date"
+                      cachedName="settlement_date"
+                      externalMetadataColumnId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].ExternalColumns[settlement_date]"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[settlement_date]" />
+                    <inputColumn
+                      refId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].Columns[security_description]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="security_description"
+                      externalMetadataColumnId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].ExternalColumns[security_description]"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[security_description]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].ExternalColumns[Id]"
+                      dataType="r8"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].ExternalColumns[code]"
+                      dataType="wstr"
+                      length="255"
+                      name="code" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].ExternalColumns[transaction_type_desc]"
+                      dataType="wstr"
+                      length="255"
+                      name="transaction_type_desc" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].ExternalColumns[accountid]"
+                      dataType="r8"
+                      name="accountid" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].ExternalColumns[volume]"
+                      dataType="r8"
+                      name="volume" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].ExternalColumns[value]"
+                      dataType="r8"
+                      name="value" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].ExternalColumns[currency_code]"
+                      dataType="wstr"
+                      length="255"
+                      name="currency_code" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].ExternalColumns[exchange_rate]"
+                      dataType="r8"
+                      name="exchange_rate" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].ExternalColumns[trade_date]"
+                      dataType="date"
+                      name="trade_date" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].ExternalColumns[settlement_date]"
+                      dataType="date"
+                      name="settlement_date" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input].ExternalColumns[security_description]"
+                      dataType="wstr"
+                      length="255"
+                      name="security_description" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import to Staging\Destination 3 - Transaction.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import to Staging\Destination 3 - Transaction.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import to Staging\Destination 3 - Transaction.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Destination 3 - Transaction.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import to Staging\Destination 3 - Transaction.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import to Staging\Source - Account$"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Source - Account$"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Account$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import to Staging\Source - Account$.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionExcel]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionExcel]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Output].Columns[Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Output].ExternalColumns[Id]"
+                      lineageId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Output].Columns[accountid]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Output].ExternalColumns[accountid]"
+                      lineageId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Output].Columns[accountid]"
+                      name="accountid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Output].Columns[account_group_code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Output].ExternalColumns[account_group_code]"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Output].Columns[account_group_code]"
+                      name="account_group_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Output].Columns[mandate_code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Output].ExternalColumns[mandate_code]"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Output].Columns[mandate_code]"
+                      name="mandate_code"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Output].ExternalColumns[Id]"
+                      dataType="r8"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Output].ExternalColumns[accountid]"
+                      dataType="r8"
+                      name="accountid" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Output].ExternalColumns[account_group_code]"
+                      dataType="wstr"
+                      length="255"
+                      name="account_group_code" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Output].ExternalColumns[mandate_code]"
+                      dataType="wstr"
+                      length="255"
+                      name="mandate_code" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Error Output].Columns[Id]"
+                      dataType="r8"
+                      lineageId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Error Output].Columns[accountid]"
+                      dataType="r8"
+                      lineageId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Error Output].Columns[accountid]"
+                      name="accountid" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Error Output].Columns[account_group_code]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Error Output].Columns[account_group_code]"
+                      name="account_group_code" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Error Output].Columns[mandate_code]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Error Output].Columns[mandate_code]"
+                      name="mandate_code" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import to Staging\Source 1 - AccountGroup$"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Source 1 - AccountGroup$"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">AccountGroup$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import to Staging\Source 1 - AccountGroup$.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionExcel]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionExcel]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Output].Columns[Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Output].ExternalColumns[Id]"
+                      lineageId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Output].Columns[account_group_code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Output].ExternalColumns[account_group_code]"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Output].Columns[account_group_code]"
+                      name="account_group_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Output].Columns[primary_manager_entity_id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Output].ExternalColumns[primary_manager_entity_id]"
+                      lineageId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Output].Columns[primary_manager_entity_id]"
+                      name="primary_manager_entity_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Output].Columns[service_type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Output].ExternalColumns[service_type]"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Output].Columns[service_type]"
+                      name="service_type"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Output].ExternalColumns[Id]"
+                      dataType="r8"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Output].ExternalColumns[account_group_code]"
+                      dataType="wstr"
+                      length="255"
+                      name="account_group_code" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Output].ExternalColumns[primary_manager_entity_id]"
+                      dataType="r8"
+                      name="primary_manager_entity_id" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Output].ExternalColumns[service_type]"
+                      dataType="wstr"
+                      length="255"
+                      name="service_type" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Error Output].Columns[Id]"
+                      dataType="r8"
+                      lineageId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Error Output].Columns[account_group_code]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Error Output].Columns[account_group_code]"
+                      name="account_group_code" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Error Output].Columns[primary_manager_entity_id]"
+                      dataType="r8"
+                      lineageId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Error Output].Columns[primary_manager_entity_id]"
+                      name="primary_manager_entity_id" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Error Output].Columns[service_type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Error Output].Columns[service_type]"
+                      name="service_type" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import to Staging\Source 2 - Consultant$"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Source 2 - Consultant$"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Consultant$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import to Staging\Source 2 - Consultant$.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionExcel]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionExcel]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].Columns[Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].ExternalColumns[Id]"
+                      lineageId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].Columns[FPPosition]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].ExternalColumns[FPPosition]"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].Columns[FPPosition]"
+                      name="FPPosition"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].Columns[FPRegion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].ExternalColumns[FPRegion]"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].Columns[FPRegion]"
+                      name="FPRegion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].Columns[FPLocation]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].ExternalColumns[FPLocation]"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].Columns[FPLocation]"
+                      name="FPLocation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].Columns[FPOffice]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].ExternalColumns[FPOffice]"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].Columns[FPOffice]"
+                      name="FPOffice"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].Columns[FPTeam]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].ExternalColumns[FPTeam]"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].Columns[FPTeam]"
+                      name="FPTeam"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].Columns[entity_id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].ExternalColumns[entity_id]"
+                      lineageId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].Columns[entity_id]"
+                      name="entity_id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].ExternalColumns[Id]"
+                      dataType="r8"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].ExternalColumns[FPPosition]"
+                      dataType="wstr"
+                      length="255"
+                      name="FPPosition" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].ExternalColumns[FPRegion]"
+                      dataType="wstr"
+                      length="255"
+                      name="FPRegion" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].ExternalColumns[FPLocation]"
+                      dataType="wstr"
+                      length="255"
+                      name="FPLocation" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].ExternalColumns[FPOffice]"
+                      dataType="wstr"
+                      length="255"
+                      name="FPOffice" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].ExternalColumns[FPTeam]"
+                      dataType="wstr"
+                      length="255"
+                      name="FPTeam" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output].ExternalColumns[entity_id]"
+                      dataType="r8"
+                      name="entity_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Error Output].Columns[Id]"
+                      dataType="r8"
+                      lineageId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Error Output].Columns[FPPosition]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Error Output].Columns[FPPosition]"
+                      name="FPPosition" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Error Output].Columns[FPRegion]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Error Output].Columns[FPRegion]"
+                      name="FPRegion" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Error Output].Columns[FPLocation]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Error Output].Columns[FPLocation]"
+                      name="FPLocation" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Error Output].Columns[FPOffice]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Error Output].Columns[FPOffice]"
+                      name="FPOffice" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Error Output].Columns[FPTeam]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Error Output].Columns[FPTeam]"
+                      name="FPTeam" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Error Output].Columns[entity_id]"
+                      dataType="r8"
+                      lineageId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Error Output].Columns[entity_id]"
+                      name="entity_id" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import to Staging\Source 3 - Transaction$"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Source 3 - Transaction$"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Transaction$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import to Staging\Source 3 - Transaction$.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionExcel]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionExcel]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].ExternalColumns[Id]"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].ExternalColumns[code]"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[code]"
+                      name="code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[transaction_type_desc]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].ExternalColumns[transaction_type_desc]"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[transaction_type_desc]"
+                      name="transaction_type_desc"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[accountid]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].ExternalColumns[accountid]"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[accountid]"
+                      name="accountid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[volume]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].ExternalColumns[volume]"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[volume]"
+                      name="volume"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[value]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].ExternalColumns[value]"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[value]"
+                      name="value"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[currency_code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].ExternalColumns[currency_code]"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[currency_code]"
+                      name="currency_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[exchange_rate]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].ExternalColumns[exchange_rate]"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[exchange_rate]"
+                      name="exchange_rate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[trade_date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].ExternalColumns[trade_date]"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[trade_date]"
+                      name="trade_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[settlement_date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].ExternalColumns[settlement_date]"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[settlement_date]"
+                      name="settlement_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[security_description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].ExternalColumns[security_description]"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].Columns[security_description]"
+                      name="security_description"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].ExternalColumns[Id]"
+                      dataType="r8"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].ExternalColumns[code]"
+                      dataType="wstr"
+                      length="255"
+                      name="code" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].ExternalColumns[transaction_type_desc]"
+                      dataType="wstr"
+                      length="255"
+                      name="transaction_type_desc" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].ExternalColumns[accountid]"
+                      dataType="r8"
+                      name="accountid" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].ExternalColumns[volume]"
+                      dataType="r8"
+                      name="volume" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].ExternalColumns[value]"
+                      dataType="r8"
+                      name="value" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].ExternalColumns[currency_code]"
+                      dataType="wstr"
+                      length="255"
+                      name="currency_code" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].ExternalColumns[exchange_rate]"
+                      dataType="r8"
+                      name="exchange_rate" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].ExternalColumns[trade_date]"
+                      dataType="date"
+                      name="trade_date" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].ExternalColumns[settlement_date]"
+                      dataType="date"
+                      name="settlement_date" />
+                    <externalMetadataColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output].ExternalColumns[security_description]"
+                      dataType="wstr"
+                      length="255"
+                      name="security_description" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[Id]"
+                      dataType="r8"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[code]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[code]"
+                      name="code" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[transaction_type_desc]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[transaction_type_desc]"
+                      name="transaction_type_desc" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[accountid]"
+                      dataType="r8"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[accountid]"
+                      name="accountid" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[volume]"
+                      dataType="r8"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[volume]"
+                      name="volume" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[value]"
+                      dataType="r8"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[value]"
+                      name="value" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[currency_code]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[currency_code]"
+                      name="currency_code" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[exchange_rate]"
+                      dataType="r8"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[exchange_rate]"
+                      name="exchange_rate" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[trade_date]"
+                      dataType="date"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[trade_date]"
+                      name="trade_date" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[settlement_date]"
+                      dataType="date"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[settlement_date]"
+                      name="settlement_date" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[security_description]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[security_description]"
+                      name="security_description" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Import to Staging.Paths[Excel Source Output]"
+              endId="Package\Import to Staging\Destination - Account.Inputs[Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Import to Staging\Source - Account$.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Import to Staging.Paths[Excel Source Output1]"
+              endId="Package\Import to Staging\Destination 1 - AccountGroup.Inputs[Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Import to Staging\Source 1 - AccountGroup$.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Import to Staging.Paths[Excel Source Output2]"
+              endId="Package\Import to Staging\Destination 2 - Consultant.Inputs[Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Import to Staging\Source 2 - Consultant$.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Import to Staging.Paths[Excel Source Output3]"
+              endId="Package\Import to Staging\Destination 3 - Transaction.Inputs[Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Import to Staging\Source 3 - Transaction$.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Import Transactions Facts"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{8D2CC926-0D2C-43FB-9741-13F37400681D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import Transactions Facts"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CB98837E-C451-4837-BD40-493DA907ED37}"
+          SQLTask:SqlStatementSource="EXEC [etl].[LoadTransactions]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Preparation SQL Task 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Disabled="True"
+      DTS:DTSID="{EDB4536F-20AF-4DE8-BE29-F64E98E4975E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Preparation SQL Task 1"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CB98837E-C451-4837-BD40-493DA907ED37}"
+          SQLTask:SqlStatementSource="IF NOT EXISTS(SELECT * FROM sys.schemas WHERE name = N'stg')&#xA;BEGIN&#xA;EXEC(N'CREATE SCHEMA [stg]')&#xA;END&#xA;CREATE TABLE [stg].[Account] (&#xA;[Id] float,&#xA;[accountid] float,&#xA;[account_group_code] nvarchar(255),&#xA;[mandate_code] nvarchar(255)&#xA;)&#xA;GO&#xA;CREATE TABLE [stg].[AccountGroup] (&#xA;[Id] float,&#xA;[account_group_code] nvarchar(255),&#xA;[primary_manager_entity_id] float,&#xA;[service_type] nvarchar(255)&#xA;)&#xA;GO&#xA;CREATE TABLE [stg].[Consultant] (&#xA;[Id] float,&#xA;[FPPosition] nvarchar(255),&#xA;[FPRegion] nvarchar(255),&#xA;[FPLocation] nvarchar(255),&#xA;[FPOffice] nvarchar(255),&#xA;[FPTeam] nvarchar(255),&#xA;[entity_id] float&#xA;)&#xA;GO&#xA;CREATE TABLE [stg].[Transaction] (&#xA;[Id] float,&#xA;[code] nvarchar(255),&#xA;[transaction_type_desc] nvarchar(255),&#xA;[accountid] float,&#xA;[volume] float,&#xA;[value] float,&#xA;[currency_code] nvarchar(255),&#xA;[exchange_rate] float,&#xA;[trade_date] datetime,&#xA;[settlement_date] datetime,&#xA;[security_description] nvarchar(255)&#xA;)&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Dimensional Model"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{497fbe5a-6fba-44b9-9b05-7be0f81f66d8}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Dimensional Model"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CB98837E-C451-4837-BD40-493DA907ED37}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [rep].[FactTransaction]&#xA;GO&#xA;TRUNCATE TABLE [rep].[DimRegion];&#xA;GO&#xA;TRUNCATE TABLE [rep].[DimAccountGroup];&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Staging Tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{29672A67-D28C-4402-A652-6C6699CD94D7}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Staging Tables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CB98837E-C451-4837-BD40-493DA907ED37}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [stg].[Transaction];&#xA;GO&#xA;TRUNCATE TABLE [stg].[Account];&#xA;GO&#xA;TRUNCATE TABLE [stg].[AccountGroup];&#xA;GO&#xA;TRUNCATE TABLE [stg].[Consultant];&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update Transaction Dimension IDs"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{9D25C4D9-380B-4827-A70D-781BE66B1D3B}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update Transaction Dimension IDs"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CB98837E-C451-4837-BD40-493DA907ED37}"
+          SQLTask:SqlStatementSource="UPDATE stg.[Transaction]&#xA;&#xA;SET     &#x9;RegionID = r.RegionID,&#xA;        &#x9;AccountGroupID = dg.AccountGroupID&#xA;&#xA;FROM stg.[Transaction] t  &#xA;&#xA;LEFT JOIN stg.Account a&#xA;ON t.accountid = a.accountid &#xA;&#xA;LEFT JOIN stg.AccountGroup g&#xA;ON a.account_group_code = g.account_group_code &#xA;&#xA;LEFT JOIN stg.Consultant c &#xA;ON g.primary_manager_entity_id = c.entity_id&#xA;&#xA;LEFT JOIN rep.DimRegion r&#xA;ON c.FPRegion = r.FPRegion&#xA;&#xA;LEFT JOIN rep.DimAccountGroup dg&#xA;ON  g.account_group_code = dg.account_group_code;&#xA;&#xA;GO &#xA;&#xA;UPDATE stg.[Transaction]&#xA;SET     &#x9;RegionID = ( SELECT RegionID FROM  rep.DimRegion WHERE FPRegion = N'Unknown' )&#xA;FROM stg.[Transaction] &#xA;WHERE &#x9;RegionID IS NULL;&#xA;GO&#xA;&#xA;&#xA;UPDATE stg.[Transaction]&#xA;SET     &#x9;AccountGroupID = ( SELECT AccountGroupID FROM  rep.DimAccountGroup WHERE account_group_code = N'Unknown' )&#xA;FROM stg.[Transaction] &#xA;WHERE &#x9;AccountGroupID IS NULL;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{556F8ACB-24A9-4E5B-8F3B-9259B6DD4CD6}"
+      DTS:From="Package\Import to Staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Truncate Dimensional Model" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{FE679BAF-4C30-47BB-AE30-5B1B258234AB}"
+      DTS:From="Package\Import Region Dimension"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Import Account Group Dimension" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{0FEA9B5B-F5C0-410F-8D91-590F92680B2B}"
+      DTS:From="Package\Update Transaction Dimension IDs"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Import Transactions Facts" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{161C55E5-D004-4732-AB35-6BAD1B8481DF}"
+      DTS:From="Package\Preparation SQL Task 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Truncate Staging Tables" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{07403AA1-23F2-4732-AE06-28B6461628F7}"
+      DTS:From="Package\Truncate Staging Tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Import to Staging" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{6BA706B7-60C3-4EC4-BA40-A73D89C38857}"
+      DTS:From="Package\Truncate Dimensional Model"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\Import Region Dimension" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{AB9BED63-AFB6-49F0-9288-ABB4BA22C081}"
+      DTS:From="Package\Import Account Group Dimension"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\Update Transaction Dimension IDs" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="198.4,41.6"
+          Id="Package\Import Region Dimension"
+          TopLeft="25.1428570942003,322.705886878769" />
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\Import to Staging"
+          TopLeft="45.0428570942002,163.688236087747" />
+        <NodeLayout
+          Size="200.8,41.6"
+          Id="Package\Import Transactions Facts"
+          TopLeft="29.2857147844471,557.200004740323" />
+        <NodeLayout
+          Size="193.6,49.6"
+          Id="Package\Preparation SQL Task 1"
+          TopLeft="27.0714284619506,0.14705874845637" />
+        <NodeLayout
+          Size="212,41.6"
+          Id="Package\Truncate Dimensional Model"
+          TopLeft="21.4285717934977,238.258826489432" />
+        <NodeLayout
+          Size="192.8,41.6"
+          Id="Package\Truncate Staging Tables"
+          TopLeft="30.1428571793496,81.2117655531345" />
+        <NodeLayout
+          Size="241.6,41.6"
+          Id="Package\Update Transaction Dimension IDs"
+          TopLeft="5.85714248005199,481.764712638921" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="126.635714443849,205.288236087747">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.9705904016854"
+              Start="0,0"
+              End="0,25.4705904016854">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.4705904016854" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="128.17142863225,523.364712638921">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.835292101402"
+              Start="0,0"
+              End="0,26.335292101402">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.335292101402" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="125.20714282065,49.7470587484564">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.4647068046781"
+              Start="0,0"
+              End="0,23.9647068046781">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.9647068046781" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="126.192857136775,122.811765553135">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.8764705346122"
+              Start="0,0"
+              End="0,33.3764705346122">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.3764705346122" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="125.885714443849,279.858826489432">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.8470603893371"
+              Start="0,0"
+              End="0,35.3470603893371">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.3470603893371" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="236,41.6"
+          Id="Package\Import Account Group Dimension"
+          TopLeft="10.8571425652017,404.800002917121" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="127.757142522627,446.400002917121">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.3647097217996"
+              Start="0,0"
+              End="0,27.8647097217996">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.8647097217996" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="126.599999829701,364.305886878769">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.494116038352"
+              Start="0,0"
+              End="0,32.994116038352">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.994116038352" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Import Region Dimension">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Import Region Dimension\OLE DB Destination"
+          TopLeft="220,186.153846153846" />
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\Import Region Dimension\OLE DB Source"
+          TopLeft="96.9230769230769,60.7692307692308" />
+        <EdgeLayout
+          Id="Package\Import Region Dimension.Paths[OLE DB Source Output]"
+          TopLeft="171.723076923077,102.369230769231">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="133.476923076923,83.7846153846153"
+              Start="0,0"
+              End="133.476923076923,76.2846153846153">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.8923076923077" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.8923076923077"
+                    Point2="0,41.8923076923077"
+                    Point3="4,41.8923076923077" />
+                  <mssgle:LineSegment
+                    End="129.476923076923,41.8923076923077" />
+                  <mssgle:CubicBezierSegment
+                    Point1="129.476923076923,41.8923076923077"
+                    Point2="133.476923076923,41.8923076923077"
+                    Point3="133.476923076923,45.8923076923077" />
+                  <mssgle:LineSegment
+                    End="133.476923076923,76.2846153846153" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Region Dimension\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Region Dimension\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Import to Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="205.6,41.6"
+          Id="Package\Import to Staging\Destination 3 - Transaction"
+          TopLeft="283.1,107.1" />
+        <NodeLayout
+          Size="202.4,41.6"
+          Id="Package\Import to Staging\Source 1 - AccountGroup$"
+          TopLeft="12.7,5.49999999999995" />
+        <NodeLayout
+          Size="216.8,41.6"
+          Id="Package\Import to Staging\Destination 1 - AccountGroup"
+          TopLeft="5.49999999999997,107.1" />
+        <NodeLayout
+          Size="190.4,41.6"
+          Id="Package\Import to Staging\Source 3 - Transaction$"
+          TopLeft="290.7,5.49999999999995" />
+        <NodeLayout
+          Size="185.6,41.6"
+          Id="Package\Import to Staging\Source 2 - Consultant$"
+          TopLeft="557.1,5.49999999999984" />
+        <NodeLayout
+          Size="164,41.6"
+          Id="Package\Import to Staging\Source - Account$"
+          TopLeft="818.9,5.49999999999984" />
+        <NodeLayout
+          Size="179.2,41.6"
+          Id="Package\Import to Staging\Destination - Account"
+          TopLeft="811.3,107.1" />
+        <NodeLayout
+          Size="200.8,41.6"
+          Id="Package\Import to Staging\Destination 2 - Consultant"
+          TopLeft="549.5,107.1" />
+        <EdgeLayout
+          Id="Package\Import to Staging.Paths[Excel Source Output3]"
+          TopLeft="385.9,47.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import to Staging.Paths[Excel Source Output2]"
+          TopLeft="649.9,47.0999999999998">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import to Staging.Paths[Excel Source Output1]"
+          TopLeft="113.9,47.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import to Staging.Paths[Excel Source Output]"
+          TopLeft="900.9,47.0999999999998">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Import Account Group Dimension">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Import Account Group Dimension\OLE DB Destination"
+          TopLeft="95.6666666666668,202.5" />
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\Import Account Group Dimension\OLE DB Source"
+          TopLeft="107,74" />
+        <EdgeLayout
+          Id="Package\Import Account Group Dimension.Paths[OLE DB Source Output]"
+          TopLeft="181.333333333333,115.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,86.8999999999999"
+              Start="0,0"
+              End="0,79.3999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,79.3999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Account Group Dimension\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Account Group Dimension\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

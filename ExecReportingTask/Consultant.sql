@@ -1,0 +1,9 @@
+﻿CREATE TABLE [stg].[Consultant](
+	[Id] [float] NULL,
+	[FPPosition] [nvarchar](255) NULL,
+	[FPRegion] [nvarchar](255) NULL,
+	[FPLocation] [nvarchar](255) NULL,
+	[FPOffice] [nvarchar](255) NULL,
+	[FPTeam] [nvarchar](255) NULL,
+	[entity_id] [float] NULL
+) ON [PRIMARY]

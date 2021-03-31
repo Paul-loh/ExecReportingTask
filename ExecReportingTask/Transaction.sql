@@ -1,0 +1,15 @@
+﻿CREATE TABLE [stg].[Transaction](
+	[Id] [float] NULL,
+	[code] [nvarchar](255) NULL,
+	[transaction_type_desc] [nvarchar](255) NULL,
+	[accountid] [float] NULL,
+	[volume] [float] NULL,
+	[value] [float] NULL,
+	[currency_code] [nvarchar](255) NULL,
+	[exchange_rate] [float] NULL,
+	[trade_date] [datetime] NULL,
+	[settlement_date] [datetime] NULL,
+	[security_description] [nvarchar](255) NULL,
+	[RegionID] [int] NULL,
+	[AccountGroupID] [int] NULL	
+) ON [PRIMARY]
